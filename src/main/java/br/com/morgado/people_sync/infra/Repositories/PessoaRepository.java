@@ -24,4 +24,28 @@ public class PessoaRepository implements PessoaRepositoryPort {
    return listaDePessoas.stream().map(PessoaEntity::toPessoa).collect(Collectors.toList());
   }
 
+  @Override
+  public Pessoa buscarPessoa(Long idPessoa) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'buscarPessoa'");
+  }
+
+  @Override
+  public Long criarPessoa(Pessoa pessoa) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'criarPessoa'");
+  }
+
+  @Override
+  public void atualizarPessoa(Pessoa pessoa, Long idPessoa) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'atualizarPessoa'");
+  }
+
+  @Override
+  public void deletarPessoa(Long idPessoa) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'deletarPessoa'");
+  }
+
 }
