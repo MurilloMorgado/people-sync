@@ -9,16 +9,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.morgado.people_sync.domain.Pessoa;
 import br.com.morgado.people_sync.domain.portas.interfaces.PessoaServicePort;
+import lombok.RequiredArgsConstructor;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "pessoa")
 public class PessoaController {
 
   private final PessoaServicePort pessoaServicePort;
-
-  public PessoaController(PessoaServicePort pessoaServicePort) {
-    this.pessoaServicePort = pessoaServicePort;
-  }
 
   @GetMapping
   public ResponseEntity<List<Pessoa>> listarPessoa() {
