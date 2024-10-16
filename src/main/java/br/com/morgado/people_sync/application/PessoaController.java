@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,14 @@ public class PessoaController {
     List<Pessoa> listaDePessoas = pessoaServicePort.listarPessoa();
 
     return ResponseEntity.ok().body(listaDePessoas);
+  }
+
+  @GetMapping(value = "/{idPessoa}")
+  public ResponseEntity<Pessoa> buscarPessoa(@PathVariable Long idPessoa) {
+
+    Pessoa pessoa = pessoaServicePort.buscarPessoa(idPessoa);
+
+    return ResponseEntity.ok().body(pessoa);
   }
 
 }

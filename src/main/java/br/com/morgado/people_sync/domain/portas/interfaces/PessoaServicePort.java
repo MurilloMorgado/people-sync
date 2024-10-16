@@ -9,7 +9,7 @@ public interface PessoaServicePort {
   
   List<Pessoa> listarPessoa();
 
-  // Pessoa buscarPessoa(Long idPessoa);
+  Pessoa buscarPessoa(Long idPessoa);
 
   // Long criarPessoa(Pessoa pessoa);
 

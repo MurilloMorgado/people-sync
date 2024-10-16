@@ -14,20 +14,24 @@ public class PessoaRepository implements PessoaRepositoryPort {
 
   private final PessoaRepositoryJpa pessoaRepositoryJpa;
 
-  public PessoaRepository(PessoaRepositoryJpa pessoaRepositoryJpa){
+  public PessoaRepository(PessoaRepositoryJpa pessoaRepositoryJpa) {
     this.pessoaRepositoryJpa = pessoaRepositoryJpa;
   }
 
   @Override
   public List<Pessoa> listarPessoa() {
-   List<PessoaEntity> listaDePessoas = pessoaRepositoryJpa.findAll();
-   return listaDePessoas.stream().map(PessoaEntity::toPessoa).collect(Collectors.toList());
+    List<PessoaEntity> listaDePessoas = pessoaRepositoryJpa.findAll();
+    return listaDePessoas.stream().map(PessoaEntity::toPessoa).collect(Collectors.toList());
   }
 
   @Override
   public Pessoa buscarPessoa(Long idPessoa) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'buscarPessoa'");
+
+    PessoaEntity pessoa = pessoaRepositoryJpa.findById(idPessoa)
+        .orElseThrow(() -> new InternalError("Falha ao buscar pessoa"));
+
+    return pessoa.toPessoa();
+
   }
 
   @Override

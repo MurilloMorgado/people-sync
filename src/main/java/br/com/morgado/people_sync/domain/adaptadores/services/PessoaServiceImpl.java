@@ -25,5 +25,13 @@ public class PessoaServiceImpl implements PessoaServicePort{
     return listaPessoa;
     
   }
+
+
+  @Override
+  public Pessoa buscarPessoa(Long idPessoa) {
+    
+    return pessoaRepository.buscarPessoa(idPessoa);
+    
+  }
   
 }
