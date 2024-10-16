@@ -36,8 +36,16 @@ public class PessoaRepository implements PessoaRepositoryPort {
 
   @Override
   public Long criarPessoa(Pessoa pessoa) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'criarPessoa'");
+
+    PessoaEntity newPessoa = new PessoaEntity(pessoa);
+
+    try {
+      return pessoaRepositoryJpa.save(newPessoa).toPessoa().getId();
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao criar pessoa");
+    }
+
   }
 
   @Override

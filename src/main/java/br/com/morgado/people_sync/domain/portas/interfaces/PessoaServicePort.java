@@ -11,7 +11,7 @@ public interface PessoaServicePort {
 
   Pessoa buscarPessoa(Long idPessoa);
 
-  // Long criarPessoa(Pessoa pessoa);
+  Long criarPessoa(Pessoa pessoa);
 
   // void atualizarPessoa(Pessoa pessoa, Long idPessoa);
 
