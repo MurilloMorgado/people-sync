@@ -3,6 +3,7 @@ package br.com.morgado.people_sync.infra.Repositories;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import br.com.morgado.people_sync.domain.Pessoa;
@@ -50,8 +51,19 @@ public class PessoaRepository implements PessoaRepositoryPort {
 
   @Override
   public void atualizarPessoa(Pessoa pessoa, Long idPessoa) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'atualizarPessoa'");
+    
+    try {
+      Pessoa pessoaDB = buscarPessoa(idPessoa);
+
+      PessoaEntity newPessoa = new PessoaEntity(pessoaDB);
+
+      BeanUtils.copyProperties(pessoa, newPessoa, "id");
+      pessoaRepositoryJpa.save(newPessoa);
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao atualizar Pessoa com ID : " + idPessoa);
+    }
+    
   }
 
   @Override

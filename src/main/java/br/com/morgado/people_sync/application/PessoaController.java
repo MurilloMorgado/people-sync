@@ -6,12 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.morgado.people_sync.domain.Pessoa;
 import br.com.morgado.people_sync.domain.portas.interfaces.PessoaServicePort;
+import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -38,10 +40,19 @@ public class PessoaController {
 
   @PostMapping
   public ResponseEntity<Long> criarPessoa(@RequestBody Pessoa pessoa) {
-    
+
     Long novaPessoa = pessoaServicePort.criarPessoa(pessoa);
 
     return ResponseEntity.ok().body(novaPessoa);
+
+  }
+
+  @PutMapping(value = "/{idPessoa}")
+  public ResponseEntity<Void> atualizarPessoa(@RequestBody Pessoa pessoa, @PathVariable Long idPessoa) {
+
+    pessoaServicePort.atualizarPessoa(pessoa, idPessoa);
+
+    return ResponseEntity.ok().build();
 
   }
 

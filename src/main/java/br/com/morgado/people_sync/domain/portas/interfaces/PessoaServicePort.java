@@ -13,7 +13,7 @@ public interface PessoaServicePort {
 
   Long criarPessoa(Pessoa pessoa);
 
-  // void atualizarPessoa(Pessoa pessoa, Long idPessoa);
+  void atualizarPessoa(Pessoa pessoa, Long idPessoa);
 
   // void deletarPessoa(Long idPessoa);
 }
