@@ -34,10 +34,18 @@ public class PessoaServiceImpl implements PessoaServicePort {
 
   @Override
   public Long criarPessoa(Pessoa pessoa) {
-    
+
     return pessoaRepository.criarPessoa(pessoa);
-    
-    
+
+  }
+
+  @Override
+  public void atualizarPessoa(Pessoa pessoa, Long idPessoa) {
+
+    buscarPessoa(idPessoa); // Metodo apenas para verificar se pessoa existe no DB
+
+    pessoaRepository.atualizarPessoa(pessoa, idPessoa);
+
   }
 
 }
