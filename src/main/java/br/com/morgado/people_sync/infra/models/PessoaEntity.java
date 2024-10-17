@@ -43,7 +43,7 @@ public class PessoaEntity {
   @Column(name = "EMAIL")
   private String email;
 
-  public Pessoa toPessoa(){
+  public Pessoa toPessoa() {
 
     Pessoa newPessoa = new Pessoa();
 
@@ -56,6 +56,17 @@ public class PessoaEntity {
     newPessoa.setTipoEndereco(this.tipoEndereco);
 
     return newPessoa;
+  }
+
+  public PessoaEntity(Pessoa pessoa) {
+    // PessoaEntity pessoaEntity = new PessoaEntity();
+    this.id = pessoa.getId();
+    this.nome = pessoa.getNome();
+    this.idade = pessoa.getIdade();
+    this.tipoEndereco = pessoa.getTipoEndereco();
+    this.dataNascimento = pessoa.getDataNascimento();
+    this.cpf = pessoa.getCpf();
+    this.email = pessoa.getEmail();
   }
 
 }
