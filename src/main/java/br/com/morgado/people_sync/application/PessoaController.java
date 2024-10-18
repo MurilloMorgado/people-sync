@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.morgado.people_sync.domain.Pessoa;
 import br.com.morgado.people_sync.domain.portas.interfaces.PessoaServicePort;
-import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 
 @RestController
