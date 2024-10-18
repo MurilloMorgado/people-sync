@@ -51,7 +51,7 @@ public class PessoaRepository implements PessoaRepositoryPort {
 
   @Override
   public void atualizarPessoa(Pessoa pessoa, Long idPessoa) {
-    
+
     try {
       Pessoa pessoaDB = buscarPessoa(idPessoa);
 
@@ -63,13 +63,14 @@ public class PessoaRepository implements PessoaRepositoryPort {
       e.printStackTrace();
       throw new InternalError("Falha ao atualizar Pessoa com ID : " + idPessoa);
     }
-    
+
   }
 
   @Override
   public void deletarPessoa(Long idPessoa) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deletarPessoa'");
+
+    pessoaRepositoryJpa.deleteById(idPessoa);
+
   }
 
 }
