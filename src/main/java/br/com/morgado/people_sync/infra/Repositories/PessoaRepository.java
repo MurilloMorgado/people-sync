@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.morgado.people_sync.domain.Pessoa;
 import br.com.morgado.people_sync.domain.portas.repositories.PessoaRepositoryPort;
+import br.com.morgado.people_sync.infra.exception.NotFoundException;
 import br.com.morgado.people_sync.infra.models.PessoaEntity;
 
 @Component
@@ -29,7 +30,7 @@ public class PessoaRepository implements PessoaRepositoryPort {
   public Pessoa buscarPessoa(Long idPessoa) {
 
     PessoaEntity pessoa = pessoaRepositoryJpa.findById(idPessoa)
-        .orElseThrow(() -> new InternalError("Falha ao buscar pessoa"));
+        .orElseThrow(() -> new NotFoundException("Falha ao buscar pessoa"));
 
     return pessoa.toPessoa();
 
