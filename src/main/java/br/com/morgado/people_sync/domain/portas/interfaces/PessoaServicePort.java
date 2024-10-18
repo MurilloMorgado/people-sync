@@ -15,5 +15,5 @@ public interface PessoaServicePort {
 
   void atualizarPessoa(Pessoa pessoa, Long idPessoa);
 
-  // void deletarPessoa(Long idPessoa);
+  void deletarPessoa(Long idPessoa);
 }
