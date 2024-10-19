@@ -53,12 +53,7 @@ public class PessoaServiceImpl implements PessoaServicePort {
 
     buscarPessoa(idPessoa); // Metodo apenas para verificar se pessoa existe no DB
 
-    try {
-      pessoaRepository.deletarPessoa(idPessoa);
-    } catch (Exception e) {
-      e.printStackTrace();
-      throw new InternalError("Não foi possivel deletar pessoa de ID : " + idPessoa);
-    }
+    pessoaRepository.deletarPessoa(idPessoa);
 
   }
 

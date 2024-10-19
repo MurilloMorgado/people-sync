@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
 import br.com.morgado.people_sync.domain.Pessoa;
@@ -70,7 +71,15 @@ public class PessoaRepository implements PessoaRepositoryPort {
   @Override
   public void deletarPessoa(Long idPessoa) {
 
-    pessoaRepositoryJpa.deleteById(idPessoa);
+    try {
+      pessoaRepositoryJpa.deleteById(idPessoa);
+    } catch (DataIntegrityViolationException e) {
+      throw new IllegalStateException(
+          "Não foi possível deletar a pessoa de ID " + idPessoa + " devido a restrições de integridade.");
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Não foi possível deletar pessoa de ID: " + idPessoa);
+    }
 
   }
 
