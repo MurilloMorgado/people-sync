@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 
-import br.com.morgado.people_sync.domain.Pessoa;
+import br.com.morgado.people_sync.domain.model.Pessoa;
 import br.com.morgado.people_sync.domain.portas.repositories.PessoaRepositoryPort;
 import br.com.morgado.people_sync.infra.exception.NotFoundException;
 import br.com.morgado.people_sync.infra.models.PessoaEntity;

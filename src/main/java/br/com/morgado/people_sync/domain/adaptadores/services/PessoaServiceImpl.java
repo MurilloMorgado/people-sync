@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import br.com.morgado.people_sync.domain.Pessoa;
+import br.com.morgado.people_sync.domain.model.Pessoa;
 import br.com.morgado.people_sync.domain.portas.interfaces.PessoaServicePort;
 import br.com.morgado.people_sync.infra.Repositories.PessoaRepository;
 
