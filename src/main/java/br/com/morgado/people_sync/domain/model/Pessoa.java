@@ -1,4 +1,4 @@
-package br.com.morgado.people_sync.domain;
+package br.com.morgado.people_sync.domain.model;
 
 import java.util.Date;
 
@@ -10,7 +10,7 @@ public class Pessoa {
 
   private String idade;
 
-  private String tipoEndereco;
+  private Endereco endereco;
 
   private Date dataNascimento;
 
@@ -21,12 +21,11 @@ public class Pessoa {
   public Pessoa() {
   }
 
-  public Pessoa(Long id, String nome, String idade, String tipoEndereco, Date dataNascimento, String cpf,
-      String email) {
+  public Pessoa(Long id, String nome, String idade, Endereco endereco, Date dataNascimento, String cpf, String email) {
     this.id = id;
     this.nome = nome;
     this.idade = idade;
-    this.tipoEndereco = tipoEndereco;
+    this.endereco = endereco;
     this.dataNascimento = dataNascimento;
     this.cpf = cpf;
     this.email = email;
@@ -56,12 +55,12 @@ public class Pessoa {
     this.idade = idade;
   }
 
-  public String getTipoEndereco() {
-    return tipoEndereco;
+  public Endereco getEndereco() {
+    return endereco;
   }
 
-  public void setTipoEndereco(String tipoEndereco) {
-    this.tipoEndereco = tipoEndereco;
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
   }
 
   public Date getDataNascimento() {
@@ -113,5 +112,4 @@ public class Pessoa {
     return true;
   }
 
-  
 }
