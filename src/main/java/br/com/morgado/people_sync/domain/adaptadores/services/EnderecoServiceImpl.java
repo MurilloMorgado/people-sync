@@ -6,20 +6,24 @@ import org.springframework.stereotype.Service;
 
 import br.com.morgado.people_sync.domain.model.Endereco;
 import br.com.morgado.people_sync.domain.portas.interfaces.EnderecoServicePort;
+import br.com.morgado.people_sync.infra.Repositories.EnderecoRepository;
 
 @Service
 public class EnderecoServiceImpl implements EnderecoServicePort {
 
-  private final EnderecoServicePort enderecoServicePort;
+  private final EnderecoRepository enderecoRepository;
 
-  private EnderecoServiceImpl(EnderecoServicePort enderecoServicePort){
-    this.enderecoServicePort = enderecoServicePort;
+  private EnderecoServiceImpl(EnderecoRepository enderecoRepository) {
+    this.enderecoRepository = enderecoRepository;
   }
-  
+
   @Override
   public List<Endereco> listarEnderecos() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'listarEnderecos'");
+
+    List<Endereco> listaDeEnderecos = enderecoRepository.listarEnderecos();
+
+    return listaDeEnderecos;
+
   }
-  
+
 }
