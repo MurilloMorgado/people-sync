@@ -8,4 +8,8 @@ public interface EnderecoRepositoryPort {
 
   List<Endereco> listarEnderecos();
 
+  Endereco buscarEndereco(Long idEndereco);
+
+  void atualizarEndereco(Endereco endereco, Long idEndereco);
+
 }
