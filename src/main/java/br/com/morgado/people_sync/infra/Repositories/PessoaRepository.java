@@ -54,12 +54,13 @@ public class PessoaRepository implements PessoaRepositoryPort {
   @Override
   public void atualizarPessoa(Pessoa pessoa, Long idPessoa) {
 
+    Pessoa pessoaDB = buscarPessoa(idPessoa);
+
+    BeanUtils.copyProperties(pessoa, pessoaDB, "id");
+    
     try {
-      Pessoa pessoaDB = buscarPessoa(idPessoa);
+      PessoaEntity newPessoa = new PessoaEntity(pessoaDB);
 
-      PessoaEntity newPessoa = new PessoaEntity(pessoa);
-
-      BeanUtils.copyProperties(newPessoa, pessoaDB, "id");
       pessoaRepositoryJpa.save(newPessoa);
     } catch (Exception e) {
       e.printStackTrace();
