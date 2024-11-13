@@ -19,10 +19,18 @@ public class ProfissaoServiceImpl implements ProfissaoServicePort {
 
   @Override
   public List<Profissao> listarProfissoes() {
-    
+
     List<Profissao> listaDeProfissoes = profissaoRepositoryPort.listaDeProfissoes();
 
     return listaDeProfissoes;
+  }
+
+  @Override
+  public Profissao buscarProfissao(Long idProfissao) {
+    
+    Profissao profissao = profissaoRepositoryPort.buscProfissao(idProfissao);
+
+    return profissao;
   }
 
 }

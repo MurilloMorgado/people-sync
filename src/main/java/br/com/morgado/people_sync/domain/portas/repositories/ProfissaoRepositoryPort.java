@@ -7,4 +7,6 @@ import br.com.morgado.people_sync.domain.model.Profissao;
 public interface ProfissaoRepositoryPort {
   
   List<Profissao> listaDeProfissoes();
+
+  Profissao buscProfissao(Long idProfissao);
 }
