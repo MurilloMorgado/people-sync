@@ -3,6 +3,7 @@ package br.com.morgado.people_sync.infra.Repositories;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.boot.beanvalidation.IntegrationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -34,6 +35,20 @@ public class EnderecoRepository implements EnderecoRepositoryPort {
         .orElseThrow(() -> new NotFoundException("Endereco não encontrado"));
 
     return enderecoEntity.toEndereco();
+  }
+
+  @Override
+  public Long criarEndereco(Endereco endereco) {
+
+    EnderecoEntity enderecoEntity = new EnderecoEntity(endereco);
+
+    try {
+      return enderecoRepositoryJpa.save(enderecoEntity).toEndereco().getId();
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new IntegrationException("Falha ao criar novo endereço");
+    }
+
   }
 
   @Override
