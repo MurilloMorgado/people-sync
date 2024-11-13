@@ -14,4 +14,6 @@ public interface EnderecoRepositoryPort {
 
   void atualizarEndereco(Endereco endereco, Long idEndereco);
 
+  void deletarEndereco(Long idEndereco);
+
 }

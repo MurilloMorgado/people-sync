@@ -13,4 +13,6 @@ public interface EnderecoServicePort {
   Long criarEndereco(Endereco endereco);
   
   void atualizarEndereco(Endereco endereco, Long idEndereco);
+
+  void deletarEndereco(Long idEndereco);
 }

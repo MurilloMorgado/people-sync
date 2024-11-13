@@ -49,4 +49,10 @@ public class EnderecoServiceImpl implements EnderecoServicePort {
 
   }
 
+  @Override
+  public void deletarEndereco(Long idEndereco) {
+    
+    enderecoRepository.deletarEndereco(idEndereco);
+  }
+
 }

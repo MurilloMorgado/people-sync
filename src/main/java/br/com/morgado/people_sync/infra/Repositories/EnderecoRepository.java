@@ -71,4 +71,15 @@ public class EnderecoRepository implements EnderecoRepositoryPort {
 
   }
 
+  @Override
+  public void deletarEndereco(Long idEndereco) {
+    
+    try {
+    enderecoRepositoryJpa.deleteById(idEndereco);      
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao deletar o endereço do banco");
+    }
+  }
+
 }
