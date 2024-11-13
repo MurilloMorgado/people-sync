@@ -1,4 +1,4 @@
-# Big Game Survey 
+# People-sync 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/MurilloMorgado/people-sync/blob/main/LICENSE) 
 
 # Sobre o projeto
