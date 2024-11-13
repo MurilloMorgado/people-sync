@@ -3,8 +3,10 @@ package br.com.morgado.people_sync.application;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,14 @@ public class EnderecoController {
 
   }
 
+  @PostMapping
+  public ResponseEntity<Long> criarEndereco(@RequestBody Endereco endereco){
+
+    Long idEndereco = enderecoServicePort.criarEndereco(endereco);
+
+    return ResponseEntity.ok().body(idEndereco);
+  }
+
   @PutMapping(value = "atualizar/{idEndereco}")
   public ResponseEntity<Void> atualizarEndereco(@RequestBody Endereco endereco, @PathVariable Long idEndereco) {
 
@@ -47,4 +57,11 @@ public class EnderecoController {
     return ResponseEntity.ok().build();
   }
 
+  @DeleteMapping(value = "deletar/{idEndereco}")
+  public ResponseEntity<Void> deletarEndereco(@PathVariable Long idEndereco){
+
+    enderecoServicePort.deletarEndereco(idEndereco);
+
+    return ResponseEntity.ok().build();
+  }
 }

@@ -10,6 +10,10 @@ public interface EnderecoRepositoryPort {
 
   Endereco buscarEndereco(Long idEndereco);
 
+  Long criarEndereco(Endereco endereco);
+
   void atualizarEndereco(Endereco endereco, Long idEndereco);
+
+  void deletarEndereco(Long idEndereco);
 
 }

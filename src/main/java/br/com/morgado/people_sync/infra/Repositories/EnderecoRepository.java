@@ -3,6 +3,7 @@ package br.com.morgado.people_sync.infra.Repositories;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.hibernate.boot.beanvalidation.IntegrationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +38,20 @@ public class EnderecoRepository implements EnderecoRepositoryPort {
   }
 
   @Override
+  public Long criarEndereco(Endereco endereco) {
+
+    EnderecoEntity enderecoEntity = new EnderecoEntity(endereco);
+
+    try {
+      return enderecoRepositoryJpa.save(enderecoEntity).toEndereco().getId();
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new IntegrationException("Falha ao criar novo endereço");
+    }
+
+  }
+
+  @Override
   public void atualizarEndereco(Endereco endereco, Long idEndereco) {
 
     Endereco enderecoDB = buscarEndereco(idEndereco);
@@ -54,6 +69,17 @@ public class EnderecoRepository implements EnderecoRepositoryPort {
       throw new InternalError("Falha ao atualizar endereco no Banco");
     }
 
+  }
+
+  @Override
+  public void deletarEndereco(Long idEndereco) {
+    
+    try {
+    enderecoRepositoryJpa.deleteById(idEndereco);      
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao deletar o endereço do banco");
+    }
   }
 
 }

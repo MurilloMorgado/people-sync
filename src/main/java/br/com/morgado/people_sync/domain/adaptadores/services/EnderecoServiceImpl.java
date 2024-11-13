@@ -25,21 +25,34 @@ public class EnderecoServiceImpl implements EnderecoServicePort {
     return listaDeEnderecos;
 
   }
-  
-    @Override
-    public Endereco buscarEndereco(Long idEndereco) {
-      
-      Endereco endereco = enderecoRepository.buscarEndereco(idEndereco);
 
-      return endereco;
-      
-    }
+  @Override
+  public Endereco buscarEndereco(Long idEndereco) {
+
+    Endereco endereco = enderecoRepository.buscarEndereco(idEndereco);
+
+    return endereco;
+
+  }
+
+  @Override
+  public Long criarEndereco(Endereco endereco) {
+    
+    return enderecoRepository.criarEndereco(endereco);
+    
+  }
 
   @Override
   public void atualizarEndereco(Endereco endereco, Long idEndereco) {
 
     enderecoRepository.atualizarEndereco(endereco, idEndereco);
 
+  }
+
+  @Override
+  public void deletarEndereco(Long idEndereco) {
+    
+    enderecoRepository.deletarEndereco(idEndereco);
   }
 
 }
