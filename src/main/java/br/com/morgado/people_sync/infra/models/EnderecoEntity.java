@@ -54,6 +54,7 @@ public class EnderecoEntity {
     newEndereco.setLogradouro(logradouro);
     newEndereco.setCidade(cidade);
     newEndereco.setPais(pais);
+    newEndereco.setEstado(estado);
 
     return newEndereco;
 
