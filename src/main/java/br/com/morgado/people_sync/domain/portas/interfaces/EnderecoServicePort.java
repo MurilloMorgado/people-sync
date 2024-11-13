@@ -7,4 +7,6 @@ import br.com.morgado.people_sync.domain.model.Endereco;
 public interface EnderecoServicePort {
   
   List<Endereco> listarEnderecos();
+
+  void atualizarEndereco(Endereco endereco, Long idEndereco);
 }
