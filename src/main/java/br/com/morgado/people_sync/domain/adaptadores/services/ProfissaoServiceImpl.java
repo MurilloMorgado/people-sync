@@ -7,21 +7,20 @@ import org.springframework.stereotype.Service;
 import br.com.morgado.people_sync.domain.model.Profissao;
 import br.com.morgado.people_sync.domain.portas.interfaces.ProfissaoServicePort;
 import br.com.morgado.people_sync.domain.portas.repositories.ProfissaoRepositoryPort;
-import br.com.morgado.people_sync.infra.models.ProfissaoEntity;
 
 @Service
 public class ProfissaoServiceImpl implements ProfissaoServicePort {
 
-  private final ProfissaoRepositoryPort profissaoRepositoryPort;
+  private final ProfissaoRepositoryPort profissaoRepository;
 
   public ProfissaoServiceImpl(ProfissaoRepositoryPort profissaoRepositoryPort) {
-    this.profissaoRepositoryPort = profissaoRepositoryPort;
+    this.profissaoRepository = profissaoRepositoryPort;
   }
 
   @Override
   public List<Profissao> listarProfissoes() {
 
-    List<Profissao> listaDeProfissoes = profissaoRepositoryPort.listaDeProfissoes();
+    List<Profissao> listaDeProfissoes = profissaoRepository.listaDeProfissoes();
 
     return listaDeProfissoes;
   }
@@ -29,7 +28,7 @@ public class ProfissaoServiceImpl implements ProfissaoServicePort {
   @Override
   public Profissao buscarProfissao(Long idProfissao) {
 
-    Profissao profissao = profissaoRepositoryPort.buscProfissao(idProfissao);
+    Profissao profissao = profissaoRepository.buscProfissao(idProfissao);
 
     return profissao;
   }
@@ -37,9 +36,16 @@ public class ProfissaoServiceImpl implements ProfissaoServicePort {
   @Override
   public Long criarProfissao(Profissao profissao) {
 
-    Long idProfissao = profissaoRepositoryPort.criarProfissao(profissao);
+    Long idProfissao = profissaoRepository.criarProfissao(profissao);
 
     return idProfissao;
+
+  }
+
+  @Override
+  public void atualizarProfissao(Profissao profissao, Long idProfissao) {
+
+    profissaoRepository.atualizarProfissao(profissao, idProfissao);
 
   }
 

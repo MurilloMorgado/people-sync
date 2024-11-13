@@ -11,4 +11,6 @@ public interface ProfissaoServicePort {
   Profissao buscarProfissao(Long idProfissao);
 
   Long criarProfissao(Profissao profissao);
+
+  void atualizarProfissao(Profissao profissao, Long idProfissao);
 }

@@ -3,9 +3,11 @@ package br.com.morgado.people_sync.infra.Repositories;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import br.com.morgado.people_sync.domain.model.Profissao;
+import br.com.morgado.people_sync.domain.portas.interfaces.ProfissaoServicePort;
 import br.com.morgado.people_sync.domain.portas.repositories.ProfissaoRepositoryPort;
 import br.com.morgado.people_sync.infra.exception.NotFoundException;
 import br.com.morgado.people_sync.infra.models.ProfissaoEntity;
@@ -47,6 +49,22 @@ public class ProfissaoRepository implements ProfissaoRepositoryPort {
     } catch (Exception e) {
       e.printStackTrace();
       throw new InternalError("Falaha ao criar nossa profissão");
+    }
+  }
+
+  @Override
+  public void atualizarProfissao(Profissao profissao, Long idProfissao) {
+
+    Profissao profissaoDB = buscProfissao(idProfissao);
+
+    BeanUtils.copyProperties(profissao, profissaoDB, "idProfissao");
+
+    try {
+      ProfissaoEntity profissaoEntity = new ProfissaoEntity(profissaoDB);
+      profissaoRepositoryJpa.save(profissaoEntity);
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao atualizar a profissão");
     }
   }
 
