@@ -12,6 +12,8 @@ public class Pessoa {
 
   private Endereco endereco;
 
+  private Profissao profissao;
+
   private Date dataNascimento;
 
   private String cpf;
@@ -21,7 +23,8 @@ public class Pessoa {
   public Pessoa() {
   }
 
-  public Pessoa(Long id, String nome, String idade, Endereco endereco, Date dataNascimento, String cpf, String email) {
+  public Pessoa(Long id, String nome, String idade, Endereco endereco, Date dataNascimento, String cpf, String email,
+      Profissao profissao) {
     this.id = id;
     this.nome = nome;
     this.idade = idade;
@@ -29,6 +32,7 @@ public class Pessoa {
     this.dataNascimento = dataNascimento;
     this.cpf = cpf;
     this.email = email;
+    this.profissao = profissao;
   }
 
   public Long getId() {
@@ -85,6 +89,14 @@ public class Pessoa {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public Profissao getProfissao() {
+    return profissao;
+  }
+
+  public void setProfissao(Profissao profissao) {
+    this.profissao = profissao;
   }
 
   @Override

@@ -57,9 +57,9 @@ public class PessoaRepository implements PessoaRepositoryPort {
     try {
       Pessoa pessoaDB = buscarPessoa(idPessoa);
 
-      PessoaEntity newPessoa = new PessoaEntity(pessoaDB);
+      PessoaEntity newPessoa = new PessoaEntity(pessoa);
 
-      BeanUtils.copyProperties(pessoa, newPessoa, "id");
+      BeanUtils.copyProperties(newPessoa, pessoaDB, "id");
       pessoaRepositoryJpa.save(newPessoa);
     } catch (Exception e) {
       e.printStackTrace();

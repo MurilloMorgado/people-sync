@@ -37,6 +37,10 @@ public class PessoaEntity {
   @JoinColumn(name = "ID_ENDERECO")
   private EnderecoEntity enderecoEntity;
 
+  @ManyToOne
+  @JoinColumn(name = "ID_PROFISSAO")
+  private ProfissaoEntity profissaoEntity;
+
   @Column(name = "DATA_NASCIMENTO")
   private Date dataNascimento;
 
@@ -58,6 +62,7 @@ public class PessoaEntity {
     newPessoa.setNome(this.nome);
 
     newPessoa.setEndereco(this.enderecoEntity.toEndereco());
+    newPessoa.setProfissao(this.profissaoEntity.toProfissao());
 
     return newPessoa;
   }
@@ -71,6 +76,8 @@ public class PessoaEntity {
     this.dataNascimento = pessoa.getDataNascimento();
     this.cpf = pessoa.getCpf();
     this.email = pessoa.getEmail();
+    this.profissaoEntity = new ProfissaoEntity(pessoa.getProfissao());
+
   }
 
 }
