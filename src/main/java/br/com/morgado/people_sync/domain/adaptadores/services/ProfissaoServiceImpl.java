@@ -49,4 +49,11 @@ public class ProfissaoServiceImpl implements ProfissaoServicePort {
 
   }
 
+  @Override
+  public void deletarProfissao(Long idProfissao) {
+    
+    profissaoRepository.deletarProfissao(idProfissao);
+    
+  }
+
 }

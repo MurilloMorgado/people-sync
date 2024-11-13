@@ -7,7 +7,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 import br.com.morgado.people_sync.domain.model.Profissao;
-import br.com.morgado.people_sync.domain.portas.interfaces.ProfissaoServicePort;
 import br.com.morgado.people_sync.domain.portas.repositories.ProfissaoRepositoryPort;
 import br.com.morgado.people_sync.infra.exception.NotFoundException;
 import br.com.morgado.people_sync.infra.models.ProfissaoEntity;
@@ -65,6 +64,17 @@ public class ProfissaoRepository implements ProfissaoRepositoryPort {
     } catch (Exception e) {
       e.printStackTrace();
       throw new InternalError("Falha ao atualizar a profissão");
+    }
+  }
+
+  @Override
+  public void deletarProfissao(Long idProfissao) {
+    
+    try {
+      profissaoRepositoryJpa.deleteById(idProfissao);
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falha ao deletar Profissao do banco");
     }
   }
 

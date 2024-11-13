@@ -3,6 +3,7 @@ package br.com.morgado.people_sync.application;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 import br.com.morgado.people_sync.domain.model.Profissao;
 import br.com.morgado.people_sync.domain.portas.interfaces.ProfissaoServicePort;
@@ -32,7 +32,7 @@ public class ProfissaoController {
   }
 
   @GetMapping(value = "{idProfissao}")
-  public ResponseEntity<Profissao> buscarProfissao(@PathVariable Long idProfissao){
+  public ResponseEntity<Profissao> buscarProfissao(@PathVariable Long idProfissao) {
 
     Profissao profissao = profissaoServicePort.buscarProfissao(idProfissao);
 
@@ -40,7 +40,7 @@ public class ProfissaoController {
   }
 
   @PostMapping
-  public ResponseEntity<Long> criarProfissao(@RequestBody Profissao profissao){
+  public ResponseEntity<Long> criarProfissao(@RequestBody Profissao profissao) {
 
     Long idProfissao = profissaoServicePort.criarProfissao(profissao);
 
@@ -48,9 +48,17 @@ public class ProfissaoController {
   }
 
   @PutMapping(value = "atualizar/{idProfissao}")
-  public ResponseEntity<Void> atualizarProfissao(@RequestBody Profissao profissao,@PathVariable Long idProfissao){
+  public ResponseEntity<Void> atualizarProfissao(@RequestBody Profissao profissao, @PathVariable Long idProfissao) {
 
     profissaoServicePort.atualizarProfissao(profissao, idProfissao);
+
+    return ResponseEntity.ok().build();
+  }
+
+  @DeleteMapping(value = "deletar/{idProfissao}")
+  public ResponseEntity<Void> deletarProfissao(@PathVariable Long idProfissao) {
+
+    profissaoServicePort.deletarProfissao(idProfissao);
 
     return ResponseEntity.ok().build();
   }

@@ -13,4 +13,6 @@ public interface ProfissaoRepositoryPort {
   Long criarProfissao(Profissao profissao);
 
   void atualizarProfissao(Profissao profissao, Long idProfissao);
+
+  void deletarProfissao(Long idProfissao);
 }
