@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import br.com.morgado.people_sync.domain.model.Profissao;
 import br.com.morgado.people_sync.domain.portas.interfaces.ProfissaoServicePort;
 import br.com.morgado.people_sync.domain.portas.repositories.ProfissaoRepositoryPort;
+import br.com.morgado.people_sync.infra.models.ProfissaoEntity;
 
 @Service
 public class ProfissaoServiceImpl implements ProfissaoServicePort {
@@ -27,10 +28,19 @@ public class ProfissaoServiceImpl implements ProfissaoServicePort {
 
   @Override
   public Profissao buscarProfissao(Long idProfissao) {
-    
+
     Profissao profissao = profissaoRepositoryPort.buscProfissao(idProfissao);
 
     return profissao;
+  }
+
+  @Override
+  public Long criarProfissao(Profissao profissao) {
+
+    Long idProfissao = profissaoRepositoryPort.criarProfissao(profissao);
+
+    return idProfissao;
+
   }
 
 }

@@ -9,4 +9,6 @@ public interface ProfissaoServicePort {
   List<Profissao> listarProfissoes();
 
   Profissao buscarProfissao(Long idProfissao);
+
+  Long criarProfissao(Profissao profissao);
 }

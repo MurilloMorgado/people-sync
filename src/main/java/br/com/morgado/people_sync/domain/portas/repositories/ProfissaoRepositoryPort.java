@@ -9,4 +9,6 @@ public interface ProfissaoRepositoryPort {
   List<Profissao> listaDeProfissoes();
 
   Profissao buscProfissao(Long idProfissao);
+
+  Long criarProfissao(Profissao profissao);
 }

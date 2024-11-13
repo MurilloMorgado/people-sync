@@ -36,4 +36,18 @@ public class ProfissaoRepository implements ProfissaoRepositoryPort {
 
   }
 
+  @Override
+  public Long criarProfissao(Profissao profissao) {
+
+    ProfissaoEntity profissaoEntity = new ProfissaoEntity(profissao);
+
+    try {
+      return profissaoRepositoryJpa.save(profissaoEntity).toProfissao().getIdProfissao();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      throw new InternalError("Falaha ao criar nossa profissão");
+    }
+  }
+
 }
